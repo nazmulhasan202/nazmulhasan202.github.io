@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects - Nazmul Hasan</title>
+<meta name="description" content="Research, industry and self-driven projects by Nazmul Hasan across machine learning, computer vision and optimization.">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88' font-family='Georgia,serif'>N</text></svg>">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="head-inner">
+    <a class="wordmark" href="index.html">Nazmul Hasan <span>/ Tucson, AZ</span></a>
+    <nav id="nav">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#education">Education</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="publications.html">Publications</a>
+      <a href="projects.html" class="current">Projects</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero">
+<div class="wrap">
+  <p class="kicker">Projects</p>
+  <h1>Research, industry work<br>and things I built on my own.</h1>
+  <p class="lede">
+    The four headline projects are on the <a href="index.html#work">front page</a>. This is the
+    longer catalog, including course and self-driven work.
+  </p>
+</div>
+</section>
+
+<section class="tone-cream">
+<div class="wrap">
+  <div class="sec-head"><p class="sec-label"><span class="sec-n">01</span>Research</p><h2>Research</h2><div class="sec-rule"></div></div>
+
+  <article class="card">
+    <div class="card-meta"><span class="org">NASA Glenn, Lockheed Martin</span><span class="when">PhD research</span></div>
+    <h3>Ensemble ML for anomaly detection in laser powder bed fusion</h3>
+    <p>Real-time photodiode sensor data feeding ensemble models that detect overheating layer by layer, at F1 = 0.865, a 9.66% improvement over the prior state of the art. Porosity models reach F1 = 0.879.</p>
+    <ul class="tags"><li>Anomaly detection</li><li>Sensor data</li><li>Ensemble methods</li></ul>
+  </article>
+
+  <article class="card">
+    <div class="card-meta"><span class="org">PhD research</span><span class="when">2025</span></div>
+    <h3>Vision transformer segmentation of melt pool images</h3>
+    <p>Applied SAM and CLIPSeg to melt pool segmentation where labeled data is scarce, using prompt engineering to get zero-shot performance from foundation models never trained for the domain. This work is the baseline that RAMPSeg was built to beat.</p>
+    <ul class="tags"><li>SAM</li><li>CLIPSeg</li><li>Zero-shot</li><li>Prompt engineering</li></ul>
+  </article>
+
+  <article class="card">
+    <div class="card-meta"><span class="org">NASA Glenn</span><span class="when">PhD research</span></div>
+    <h3>Statistical and predictive modeling of thermal process history</h3>
+    <p>Physics-guided models correlating process monitoring signals to solidification microstructure, with R squared between 0.90 and 0.95, and roughly 1.5 hours of analysis time saved per case.</p>
+    <ul class="tags"><li>Physics-guided ML</li><li>Regression</li><li>Inconel 718</li></ul>
+  </article>
+
+  <article class="card">
+    <div class="card-meta"><span class="org">PhD research</span><span class="when">2023</span></div>
+    <h3>Ontology for root cause analysis in metal additive manufacturing</h3>
+    <p>A structured knowledge graph of defects and causal factors, built so that process planning decisions and corrective actions trace back to evidence rather than to institutional memory. Finalist for the IISE Best Student Paper Award.</p>
+    <ul class="tags"><li>Knowledge graphs</li><li>Ontology</li><li>Root cause analysis</li></ul>
+  </article>
+</div>
+</section>
+
+<section class="tone-warm">
+<div class="wrap">
+  <div class="sec-head"><p class="sec-label"><span class="sec-n">02</span>Self-driven</p><h2>Self-driven</h2><div class="sec-rule"></div></div>
+
+  <article class="card">
+    <div class="card-meta"><span class="org">Open source</span><span class="when">2025</span></div>
+    <h3>Object detection and counting on a conveyor belt</h3>
+    <p>Fine-tuned an Ultralytics YOLO model to detect and count apples moving on a conveyor, reaching F1 = 0.98. Public repository.</p>
+    <ul class="tags"><li>YOLO</li><li>Object detection</li><li>Ultralytics</li></ul>
+  </article>
+
+  <article class="card">
+    <div class="card-meta"><span class="org">Deployed app</span><span class="when">2025</span></div>
+    <h3>Machine failure prediction, end to end</h3>
+    <p>A Random Forest classifier on the AI4I 2020 predictive maintenance dataset, wrapped in a deployed Streamlit application that predicts failure from air temperature, process temperature and rotational speed.</p>
+    <details class="disc">
+      <summary>Why I built the deployment half</summary>
+      <div class="disc-body">
+        <p>
+          A notebook that reports an F1 score proves very little about whether the work would survive
+          in production. I built this one specifically to practice the parts that usually get skipped:
+          packaging the model, handling input the user actually supplies, and keeping the thing
+          running where somebody other than me can reach it.
+        </p>
+      </div>
+    </details>
+    <ul class="tags"><li>Random Forest</li><li>Streamlit</li><li>Predictive maintenance</li></ul>
+  </article>
+
+  <article class="card">
+    <div class="card-meta"><span class="org">Generative AI</span><span class="when">2025</span></div>
+    <h3>Privacy Shield: AI face censor</h3>
+    <p>A web application that detects and censors faces in images, with an interactive mask editor, censor style options and export. Built entirely by prompting in Google AI Studio with Gemini, without hand-written code, as an experiment in how far prompt-driven product building actually goes.</p>
+    <ul class="tags"><li>Gemini</li><li>Prompt engineering</li><li>Face detection</li></ul>
+  </article>
+</div>
+</section>
+
+<section class="tone-cream">
+<div class="wrap">
+  <div class="sec-head"><p class="sec-label"><span class="sec-n">03</span>Earlier work</p><h2>Earlier work</h2><div class="sec-rule"></div></div>
+
+  <article class="card">
+    <div class="card-meta"><span class="org">BUET</span><span class="when">2018</span></div>
+    <h3>Multi-objective optimization of a face milling operation</h3>
+    <p>Implemented and compared five multi-objective routines in MATLAB: global criterion, lexicographic, weighted sum, epsilon-constraint and a genetic algorithm.</p>
+    <ul class="tags"><li>Multi-objective optimization</li><li>MATLAB</li></ul>
+  </article>
+
+  <article class="card">
+    <div class="card-meta"><span class="org">BUET</span><span class="when">2016</span></div>
+    <h3>Robotic arm design and control</h3>
+    <p>A 3D CAD model of the Robotek II robotic arm together with control algorithms automating motion sequences for simulated industrial operations.</p>
+    <ul class="tags"><li>CAD</li><li>Control</li><li>Robotics</li></ul>
+  </article>
+
+  <article class="card">
+    <div class="card-meta"><span class="org">Course projects</span><span class="when">2024 - 2025</span></div>
+    <h3>LLM applications</h3>
+    <p>An API pipeline for sentiment analysis of Amazon reviews, and an automated extraction and synthesis tool for financial report insights.</p>
+    <ul class="tags"><li>LLM</li><li>NLP</li><li>Sentiment analysis</li></ul>
+  </article>
+
+  <article class="card">
+    <div class="card-meta"><span class="org">LafargeHolcim</span><span class="when">2016</span></div>
+    <h3>Cement bag loading time study and storage layout</h3>
+    <p>An analytical model of manual cement bag loading built from a comprehensive time study, plus a space-efficient floor layout for palletized storage that raised inventory capacity by roughly 9.7%.</p>
+    <ul class="tags"><li>Time study</li><li>Facility layout</li><li>Industrial engineering</li></ul>
+  </article>
+</div>
+</section>
+
+</main>
+
+<button id="to-top" type="button" aria-label="Back to top">&uarr;</button>
+
+<footer>
+<div class="foot-inner">
+  <p>Nazmul Hasan &middot; Tucson, Arizona</p>
+  <p class="foot-links">
+    <a href="https://www.linkedin.com/in/nazmul202">LinkedIn</a>
+    <a href="https://github.com/nazmulhasan202">GitHub</a>
+    <a href="https://scholar.google.com/citations?user=4dKkCjIAAAAJ&amp;hl=en">Scholar</a>
+    <a href="https://orcid.org/0000-0002-9303-4618">ORCID</a>
+  </p>
+</div>
+</footer>
+
+<script src="site.js" defer></script>
+</body>
+</html>

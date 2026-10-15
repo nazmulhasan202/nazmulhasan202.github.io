@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publications - Nazmul Hasan</title>
+<meta name="description" content="Peer-reviewed journal articles and conference papers by Nazmul Hasan on machine learning, computer vision and optimization in manufacturing.">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88' font-family='Georgia,serif'>N</text></svg>">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="head-inner">
+    <a class="wordmark" href="index.html">Nazmul Hasan <span>/ Tucson, AZ</span></a>
+    <nav id="nav">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#education">Education</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="publications.html" class="current">Publications</a>
+      <a href="projects.html">Projects</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero">
+<div class="wrap">
+  <p class="kicker">Publications</p>
+  <h1>Five journal articles,<br>one conference paper.</h1>
+  <p class="lede">
+    Complete records on <a href="https://scholar.google.com/citations?user=4dKkCjIAAAAJ&amp;hl=en">Google Scholar</a>
+    and <a href="https://orcid.org/0000-0002-9303-4618">ORCID</a>. Further manuscripts are under review.
+    Each entry below has a one-click citation copy.
+  </p>
+</div>
+</section>
+
+<section class="tone-cream">
+<div class="wrap">
+  <div class="sec-head"><p class="sec-label"><span class="sec-n">01</span>Journal articles</p><h2>Journal articles</h2><div class="sec-rule"></div></div>
+
+  <article class="pub" id="rampseg">
+    <h3><a href="https://link.springer.com/article/10.1007/s10845-025-02726-x">RAMPSeg: a robust calibration-free image segmentation method for reliable melt pool analysis in laser powder bed fusion</a></h3>
+    <p class="authors"><span class="me">Hasan, N.</span>, Lee, E. J., Wessman, A., &amp; Shafae, M.</p>
+    <p class="venue"><em>Journal of Intelligent Manufacturing</em>, 2025</p>
+    <p class="result">Dice score near 0.90 with a standard deviation of 0.04, running 11 times faster than Meta's SAM and 75 times faster than OpenAI's CLIPSeg. Outperforms thresholding, Otsu, SAM and CLIPSeg.</p>
+    <details class="disc">
+      <summary>Why calibration-free matters</summary>
+      <div class="disc-body">
+        <p>
+          Melt pool segmentation methods usually need per-camera, per-machine calibration, which means
+          the method a lab validates is not the method a shop floor can run. RAMPSeg removes that
+          dependency, so the same pipeline transfers across builds and setups without retuning. The
+          speed advantage over foundation models matters for the same practical reason: in-situ
+          monitoring has to keep up with the build.
+        </p>
+      </div>
+    </details>
+    <p class="pub-actions">
+      <a href="https://link.springer.com/article/10.1007/s10845-025-02726-x">Publisher</a>
+      <button class="copy-btn" type="button" data-label="Copy citation" data-copy="Hasan, N., Lee, E. J., Wessman, A., &amp; Shafae, M. (2025). RAMPSeg: A robust calibration-free image segmentation method for reliable melt pool analysis in laser powder bed fusion. Journal of Intelligent Manufacturing. https://doi.org/10.1007/s10845-025-02726-x">Copy citation</button>
+    </p>
+  </article>
+
+  <article class="pub" id="overheating">
+    <h3><a href="https://www.sciencedirect.com/science/article/pii/S2213846324002591">Machine learning-based layer-wise detection of overheating anomaly in LPBF using photodiode data</a></h3>
+    <p class="authors"><span class="me">Hasan, N.</span>, Saha, A. K., Wessman, A., &amp; Shafae, M.</p>
+    <p class="venue"><em>Manufacturing Letters</em>, 41, 1423-1431, 2024</p>
+    <p class="result">Ensemble machine learning on real-time photodiode sensor data. F1 = 0.865, a 9.66% improvement over the prior state of the art.</p>
+    <p class="pub-actions">
+      <a href="https://www.sciencedirect.com/science/article/pii/S2213846324002591">Publisher</a>
+      <button class="copy-btn" type="button" data-label="Copy citation" data-copy="Hasan, N., Saha, A. K., Wessman, A., &amp; Shafae, M. (2024). Machine learning-based layer-wise detection of overheating anomaly in LPBF using photodiode data. Manufacturing Letters, 41, 1423-1431.">Copy citation</button>
+    </p>
+  </article>
+
+  <article class="pub" id="sporadic">
+    <h3><a href="https://www.sciencedirect.com/science/article/pii/S0952197623018171">Improving sporadic demand forecasting using a modified k-nearest neighbor framework</a></h3>
+    <p class="authors"><span class="me">Hasan, N.</span>, Ahmed, N., &amp; Ali, S. M.</p>
+    <p class="venue"><em>Engineering Applications of Artificial Intelligence</em>, 129, 107633, 2024</p>
+    <p class="result">A zero-inclusive k-NN framework for sporadic and intermittent demand time series containing more than 30% zero observations, outperforming existing methods.</p>
+    <details class="disc">
+      <summary>Algorithm engineering, not model selection</summary>
+      <div class="disc-body">
+        <p>
+          Standard forecasting methods assume a distribution that intermittent demand violates: long
+          runs of zeros punctuated by irregular spikes. Rather than applying an off-the-shelf model
+          and reporting the error, we modified the k-nearest neighbor algorithm itself so that zero
+          observations carry information instead of being treated as noise or dropped.
+        </p>
+      </div>
+    </details>
+    <p class="pub-actions">
+      <a href="https://www.sciencedirect.com/science/article/pii/S0952197623018171">Publisher</a>
+      <button class="copy-btn" type="button" data-label="Copy citation" data-copy="Hasan, N., Ahmed, N., &amp; Ali, S. M. (2024). Improving sporadic demand forecasting using a modified k-nearest neighbor framework. Engineering Applications of Artificial Intelligence, 129, 107633.">Copy citation</button>
+    </p>
+  </article>
+
+  <article class="pub" id="ontology">
+    <h3>Process defects knowledge modeling in laser powder bed fusion additive manufacturing: an ontological framework</h3>
+    <p class="authors"><span class="me">Hasan, N.</span>, Rahman, M. H., Wessman, A., Smith, T., &amp; Shafae, M.</p>
+    <p class="venue"><em>Manufacturing Letters</em>, 35, 822-833, 2023</p>
+    <p class="result">An ontological framework that systematically represents defect knowledge in laser powder bed fusion, supporting corrective action, process planning and knowledge reuse.</p>
+    <p class="award">Finalist, Best Student Paper Award, Manufacturing and Design Division, IISE Annual Conference 2023</p>
+    <p class="pub-actions">
+      <button class="copy-btn" type="button" data-label="Copy citation" data-copy="Hasan, N., Rahman, M. H., Wessman, A., Smith, T., &amp; Shafae, M. (2023). Process defects knowledge modeling in laser powder bed fusion additive manufacturing: An ontological framework. Manufacturing Letters, 35, 822-833.">Copy citation</button>
+    </p>
+  </article>
+
+  <article class="pub" id="injection">
+    <h3><a href="https://link.springer.com/article/10.1007/s12008-022-01139-x">Multidisciplinary robust and reliability-based design optimization of injection molding system</a></h3>
+    <p class="authors"><span class="me">Hasan, N.</span>, Sarker, P., &amp; Zaman, K.</p>
+    <p class="venue"><em>International Journal on Interactive Design and Manufacturing</em>, 17(6), 2957-2975, 2023</p>
+    <p class="result">Integrated robust and reliability-based optimization for multi-cavity injection mold inserts, reducing material usage and enabling manufacturability through metal additive manufacturing.</p>
+    <p class="pub-actions">
+      <a href="https://link.springer.com/article/10.1007/s12008-022-01139-x">Publisher</a>
+      <button class="copy-btn" type="button" data-label="Copy citation" data-copy="Hasan, N., Sarker, P., &amp; Zaman, K. (2023). Multidisciplinary robust and reliability-based design optimization of injection molding system. International Journal on Interactive Design and Manufacturing, 17(6), 2957-2975. https://doi.org/10.1007/s12008-022-01139-x">Copy citation</button>
+    </p>
+  </article>
+</div>
+</section>
+
+<section class="tone-warm">
+<div class="wrap">
+  <div class="sec-head"><p class="sec-label"><span class="sec-n">02</span>Conference papers</p><h2>Conference papers</h2><div class="sec-rule"></div></div>
+
+  <article class="pub" id="tms">
+    <h3><a href="https://link.springer.com/chapter/10.1007/978-3-031-27447-3_37">Correlating alloy Inconel 718 solidification microstructure to local thermal history using laser powder bed fusion process monitoring</a></h3>
+    <p class="authors">Zhang, Y., <span class="me">Hasan, N.</span>, Middendorf, J., Spears, T., Smith, T., Zhang, F., Shafae, M., &amp; Wessman, A.</p>
+    <p class="venue">TMS Annual Meeting and Exhibition, 595-611, Springer, 2023</p>
+    <p class="result">A physics-guided predictive framework correlating sensor data to material microstructure quality, with R squared between 0.90 and 0.95.</p>
+    <p class="pub-actions">
+      <a href="https://link.springer.com/chapter/10.1007/978-3-031-27447-3_37">Publisher</a>
+      <button class="copy-btn" type="button" data-label="Copy citation" data-copy="Zhang, Y., Hasan, N., Middendorf, J., Spears, T., Smith, T., Zhang, F., Shafae, M., &amp; Wessman, A. (2023). Correlating alloy Inconel 718 solidification microstructure to local thermal history using laser powder bed fusion process monitoring. In TMS Annual Meeting &amp; Exhibition (pp. 595-611). Springer.">Copy citation</button>
+    </p>
+  </article>
+</div>
+</section>
+
+<section class="tone-cream">
+<div class="wrap">
+  <div class="sec-head"><p class="sec-label"><span class="sec-n">03</span>In progress and thesis</p><h2>In progress and thesis</h2><div class="sec-rule"></div></div>
+  <ul class="plain">
+    <li><strong>Privacy-preserving machine learning for sensor image data.</strong><span class="sub">Manuscript in preparation.</span></li>
+    <li><strong>Further manuscripts under review.</strong><span class="sub">Details on Google Scholar and LinkedIn.</span></li>
+    <li><strong>Robust and reliability-based multidisciplinary optimization of injection molding system.</strong><span class="sub">M.Sc. thesis, Bangladesh University of Engineering and Technology, 2020.</span></li>
+  </ul>
+</div>
+</section>
+
+</main>
+
+<button id="to-top" type="button" aria-label="Back to top">&uarr;</button>
+
+<footer>
+<div class="foot-inner">
+  <p>Nazmul Hasan &middot; Tucson, Arizona</p>
+  <p class="foot-links">
+    <a href="https://www.linkedin.com/in/nazmul202">LinkedIn</a>
+    <a href="https://github.com/nazmulhasan202">GitHub</a>
+    <a href="https://scholar.google.com/citations?user=4dKkCjIAAAAJ&amp;hl=en">Scholar</a>
+    <a href="https://orcid.org/0000-0002-9303-4618">ORCID</a>
+  </p>
+</div>
+</footer>
+
+<script src="site.js" defer></script>
+</body>
+</html>

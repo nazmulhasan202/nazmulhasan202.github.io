@@ -1,31 +1,69 @@
-A Github Pages template for academic websites. This was forked (then detached) by [Stuart Geiger](https://github.com/staeiou) from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/), which is © 2016 Michael Rose and released under the MIT License. See LICENSE.md.
+# nazmulhasan202.github.io
 
-I think I've got things running smoothly and fixed some major bugs, but feel free to file issues or make pull requests if you want to improve the generic template / theme.
+Personal website for Nazmul Hasan. Plain static HTML, CSS and vanilla JavaScript.
+No frameworks, no build step, no dependencies.
 
-### Note: if you are using this repo and now get a notification about a security vulnerability, delete the Gemfile.lock file. 
+## Files
 
-# Instructions
+| File | Purpose |
+|---|---|
+| `index.html` | Landing page: positioning, stats, four deep-dive work cards, experience, education with expandable coursework, filterable skills, certifications, honors, contact |
+| `publications.html` | All six peer-reviewed papers with key results, links and one-click citation copy |
+| `projects.html` | Fuller project catalog: research, self-driven and earlier work |
+| `style.css` | All styling. Design tokens live in the `:root` block at the top |
+| `site.js` | Scroll-spy nav, skills filter, copy-to-clipboard, back-to-top, print handling |
+| `.nojekyll` | Tells GitHub Pages to serve the files as-is rather than running Jekyll |
+| `.gitignore` | Keeps the local preview file out of the repo |
 
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Fork [this repository](https://github.com/academicpages/academicpages.github.io) by clicking the "fork" button in the top right. 
-1. Go to the repository's settings (rightmost item in the tabs that start with "Code", should be below "Unwatch"). Rename the repository "[your GitHub username].github.io", which will also be your website's URL.
-1. Set site-wide configuration and create content & metadata (see below -- also see [this set of diffs](http://archive.is/3TPas) showing what files were changed to set up [an example site](https://getorg-testacct.github.io) for a user with the username "getorg-testacct")
-1. Upload any files (like PDFs, .zip files, etc.) to the files/ directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.  
-1. Check status by going to the repository settings, in the "GitHub pages" section
-1. (Optional) Use the Jupyter notebooks or python scripts in the `markdown_generator` folder to generate markdown files for publications and talks from a TSV file.
+`_preview.html` is a generated single-file copy with the CSS and JS inlined, used
+only for previewing the page inside Claude. It is gitignored and is not part of
+the site. Regenerate it after edits if you want another preview.
 
-See more info at https://academicpages.github.io/
+## Interactive features
 
-## To run locally (not on GitHub Pages, to serve on your own computer)
+Everything degrades gracefully. With JavaScript disabled the page is still
+complete and readable, and the disclosures still open, since they use the native
+`<details>` element rather than scripted show/hide.
 
-1. Clone the repository and made updates as detailed above
-1. Make sure you have ruby-dev, bundler, and nodejs installed: `sudo apt install ruby-dev ruby-bundler nodejs`
-1. Run `bundle clean` to clean up the directory (no need to run `--force`)
-1. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
-1. Run `bundle exec jekyll liveserve` to generate the HTML and serve it from `localhost:4000` the local server will automatically rebuild and refresh the pages on change.
+- **Coursework disclosures.** Each degree has a collapsed panel. The PhD opens a
+  table of all 17 graded courses with grades; the B.Sc. opens the full
+  term-by-term record with per-term GPAs and the BUET grading scale.
+- **Work card disclosures.** Each headline project has a "how it was built"
+  panel so a reader can stay at summary level or go deep, their choice.
+- **Skills filter.** Typing highlights matching skills and dims groups with no
+  match, with a live count announced to screen readers.
+- **Citation copy.** Each publication copies a formatted citation to the
+  clipboard, with a fallback for browsers that block the clipboard API.
+- **Scroll-spy navigation.** The sticky header highlights the section in view.
+- **Print stylesheet.** Printing or saving to PDF expands every disclosure first,
+  hides the navigation and interactive controls, and avoids breaking sections
+  across pages.
+- **Deep links.** Linking to an anchor inside a collapsed panel opens it.
 
-# Changelog -- bugfixes and enhancements
+## Publishing to GitHub Pages
 
-There is one logistical issue with a ready-to-fork template theme like academic pages that makes it a little tricky to get bug fixes and updates to the core theme. If you fork this repository, customize it, then pull again, you'll probably get merge conflicts. If you want to save your various .yml configuration files and markdown files, you can delete the repository and fork it again. Or you can manually patch. 
+This repository is `nazmulhasan202/nazmulhasan202.github.io`, which GitHub serves at
+https://nazmulhasan202.github.io. It deploys from branch `master`, folder `/ (root)`
+(Settings, then Pages). The `.nojekyll` file makes GitHub serve the files as plain
+HTML instead of running Jekyll.
 
-To support this, all changes to the underlying code appear as a closed issue with the tag 'code change' -- get the list [here](https://github.com/academicpages/academicpages.github.io/issues?q=is%3Aclosed%20is%3Aissue%20label%3A%22code%20change%22%20). Each issue thread includes a comment linking to the single commit or a diff across multiple commits, so those with forked repositories can easily identify what they need to patch.
+To publish a change, commit and push to `master` (GitHub Desktop, or
+`git add . && git commit -m "..." && git push`). The site updates within a minute or two.
+
+The site replaced an unmodified copy of the academicpages Jekyll template. That
+template remains in this repository's commit history.
+
+## Editing
+
+Colors, spacing and the text measure are CSS custom properties in `:root` at the
+top of `style.css`. Changing `--accent` restyles every link, section marker,
+metric and tag at once. `--measure` controls the reading width of body text and
+`--page` the overall column.
+
+## Still to add
+
+- A photograph for the landing page
+- Figures or screenshots for the four headline projects, especially the Western
+  Digital planner dashboard and the QCRE defect detection output
+- A resume PDF to link from the landing page
+- Nothing outstanding on content; see the list above for images and the resume PDF

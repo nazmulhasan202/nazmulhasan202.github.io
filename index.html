@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nazmul Hasan</title>
+<meta name="description" content="Nazmul Hasan - applied machine learning, computer vision and optimization for manufacturing and supply chain. PhD candidate in Systems and Industrial Engineering, University of Arizona.">
+<meta property="og:title" content="Nazmul Hasan">
+<meta property="og:description" content="Applied machine learning, computer vision and optimization for physical operations.">
+<meta property="og:type" content="profile">
+<meta property="og:image" content="https://nazmulhasan202.github.io/nazmul-hasan.jpg">
+<meta property="og:url" content="https://nazmulhasan202.github.io/">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88' font-family='Georgia,serif'>N</text></svg>">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="head-inner">
+    <a class="wordmark" href="index.html">Nazmul Hasan <span>/ Tucson, AZ</span></a>
+    <nav id="nav">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#recommendations">References</a>
+      <a href="publications.html">Publications</a>
+      <a href="projects.html">Projects</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" id="top">
+<div class="wrap">
+  <div class="identity">
+    <figure class="portrait">
+      <img src="nazmul-hasan.jpg" width="500" height="500" decoding="async"
+           alt="Nazmul Hasan">
+    </figure>
+    <div class="id-text">
+      <h1>Nazmul Hasan</h1>
+      <p class="kicker">Industrial engineer, applied scientist</p>
+    </div>
+  </div>
+  <p class="tagline">Applied machine learning, computer vision<br>and optimization for physical operations.</p>
+  <p class="lede">
+    I take a problem from the raw sensor logs or the half-broken database all the way to the tool
+    somebody opens on a Monday morning. Plenty of people stop at the model. The handoff is where
+    most of the value is lost, so that is the part I pay attention to.
+  </p>
+  <p class="availability">
+    Finishing a PhD in Systems and Industrial Engineering at the University of Arizona in
+    <strong>May 2027</strong>, and open to data scientist, applied scientist and operations research
+    roles starting then.
+  </p>
+  <ul class="links">
+    <li><a href="mailto:nazmul.ipe.buet@gmail.com">nazmul.ipe.buet@gmail.com</a></li>
+    <li><button class="copy-btn" type="button" data-copy="nazmul.ipe.buet@gmail.com">Copy email</button></li>
+    <li><a href="https://www.linkedin.com/in/nazmul202">LinkedIn</a></li>
+    <li><a href="https://github.com/nazmulhasan202">GitHub</a></li>
+    <li><a href="https://scholar.google.com/citations?user=4dKkCjIAAAAJ&amp;hl=en">Google Scholar</a></li>
+    <li><a href="https://orcid.org/0000-0002-9303-4618">ORCID</a></li>
+  </ul>
+
+  <ul class="stats">
+    <li><span class="n">1st</span><span class="l">Industrial Data Challenge – QCRE, IISE 2026</span></li>
+    <li><span class="n">6</span><span class="l">Peer-reviewed publications</span></li>
+    <li><span class="n">4.00</span><span class="l">PhD GPA, every graded course an A</span></li>
+    <li><span class="n">4 yrs</span><span class="l">University teaching before the PhD</span></li>
+    <li><span class="n">5</span><span class="l">Conference presentations: NAMRC, IISE, INFORMS</span></li>
+  </ul>
+</div>
+</section>
+
+<section id="work" class="tone-cream">
+<div class="wrap">
+  <div class="sec-head"><p class="sec-label"><span class="sec-n">01</span>Selected work</p><h2>Four things I built</h2><div class="sec-rule"></div></div>
+
+  <article class="card">
+    <div class="card-meta"><span class="org-badge" aria-hidden="true">WD</span><span class="org">Western Digital</span><span class="when">Summer 2026</span></div>
+    <h3>Supply allocation optimization engine</h3>
+    <p>
+      Hard drive supply was allocated first come, first served. I replaced that with a max-min
+      fairness linear program in FICO Xpress that maximizes the minimum weeks of supply across
+      customers within each supply pool.
+    </p>
+    <ul class="metrics">
+      <li><span class="n">~12,000</span><span class="l">allocation decisions per run</span></li>
+      <li><span class="n">400+ / 200+</span><span class="l">products / customers</span></li>
+      <li><span class="n">&lt; 1 min</span><span class="l">solve time</span></li>
+      <li><span class="n">7</span><span class="l">live Oracle sources</span></li>
+    </ul>
+    <p>
+      Presented the completed engine to senior leadership, including the ITLT team. It is in user
+      testing now.
+    </p>
+    <details class="disc">
+      <summary>How it was built</summary>
+      <div class="disc-body">
+        <p>
+          <strong>The model was the smaller half.</strong> Underneath it sits an end-to-end Python and
+          pandas pipeline across seven live Oracle sources: supply, statistical forecast,
+          point-of-sale sell-through, channel inventory, confirmed backlog and pegged supply. I
+          diagnosed and repaired a 0% key-match defect between two of those sources, built a
+          four-level hierarchical imputation for missing sell-through, and corrected a fiscal
+          calendar timing mismatch that had been quietly shifting results by a week.
+        </p>
+        <p>
+          <strong>Where the LP ran out.</strong> The base formulation could not resolve week-level
+          shortfalls, so I designed a separate two-pass rollover algorithm: a forward drain followed
+          by a LIFO surplus carry.
+        </p>
+        <p>
+          <strong>Architecture.</strong> Two independently deployable services, a Streamlit pipeline
+          and interface tier and an isolated FICO Xpress solver tier, communicating through a shared
+          handoff database. Scenario storage is immutable, so any run can be replayed for audit.
+        </p>
+        <p>
+          <strong>What planners actually see.</strong> A Streamlit and Plotly dashboard with planning
+          horizon controls, business filters, customer-group and location-level targets, and Excel
+          and CSV export. I wrote the full technical handover document before leaving.
+        </p>
+        <p>
+          Worked across sales operations, strategy and business applications teams. I also directed
+          Devin, an AI coding agent, for implementation-heavy tasks while keeping ownership of the
+          algorithm and the architecture.
+        </p>
+      </div>
+    </details>
+    <ul class="tags"><li>Linear programming</li><li>FICO Xpress</li><li>Oracle</li><li>Pandas</li><li>Streamlit</li><li>Supply chain</li></ul>
+  </article>
+
+  <article class="card">
+    <div class="card-meta"><span class="org-badge" aria-hidden="true">QC</span><span class="org">IISE QCRE Data Challenge</span><span class="when">2026</span><span class="flag">1st place</span></div>
+    <h3>Defect detection that outperformed deep learning, at 0.58 s per image on a CPU</h3>
+    <p>
+      I led a three-person team to first place. The task was detecting perforation defects in
+      packaging images. Rather than training a deep network, we tied each defect type to a
+      measurable physical or geometric feature and detected it through morphological image
+      processing.
+    </p>
+    <ul class="metrics">
+      <li><span class="n">1.9913 / 2.0</span><span class="l">competition score</span></li>
+      <li><span class="n">&gt; 99%</span><span class="l">accuracy and F1</span></li>
+      <li><span class="n">0.58 s</span><span class="l">per image, CPU only</span></li>
+      <li><span class="n">23 teams</span><span class="l">29 institutions, 4 countries</span></li>
+    </ul>
+    <p>
+      The result is interpretable, needs no GPU, and is fast enough for high-throughput inspection.
+      It beat the deep learning entries.
+    </p>
+    <details class="disc">
+      <summary>Why we did not use deep learning</summary>
+      <div class="disc-body">
+        <p>
+          A competition leaderboard rewards accuracy, but a factory rewards something else: a
+          quality engineer has to be able to say why a part was rejected, and the line will not wait
+          for a GPU. Those two constraints pointed away from a learned feature extractor.
+        </p>
+        <p>
+          So we inverted the usual approach. For each defect class we asked what physically
+          distinguishes it, expressed that as a geometric or morphological property, and built a
+          detector for that property directly. The pipeline carries no trained weights, which means
+          nothing drifts, nothing needs retraining on a new batch, and every decision traces back to
+          a measurable quantity.
+        </p>
+        <p>
+          Dataset provided by Five Star Management Group. Team: Mohamed Ibrahim and Ryan Mowlai,
+          University of Arizona.
+        </p>
+      </div>
+    </details>
+    <ul class="tags"><li>Computer vision</li><li>Morphological processing</li><li>Interpretability</li><li>Edge deployment</li></ul>
+  </article>
+
+  <article class="card">
+    <div class="card-meta"><span class="org-badge" aria-hidden="true">RO</span><span class="org">Roche</span><span class="when">2026</span></div>
+    <h3>MILP staff task distribution tool</h3>
+    <p>
+      Coordinators were matching qualifications, respecting staffing limits and handling operational
+      constraints by hand every morning, across dozens of people and tasks. Workload came out uneven
+      and urgent work kept landing on the same few individuals.
+    </p>
+    <p>
+      I led the optimization and tool development: two Mixed-Integer Linear Programming models run
+      in sequence, the first maximizing coverage breadth across the team, the second minimizing
+      workload imbalance while balancing urgent assignments. A coordinator uploads an input file and
+      receives recommended assignments through an interactive dashboard within minutes.
+    </p>
+    <details class="disc">
+      <summary>Designing for people who will not open a terminal</summary>
+      <div class="disc-body">
+        <p>
+          The users are operational coordinators, not engineers. A tool they cannot run is worth
+          nothing regardless of how good the formulation is, so usability drove most of the design
+          decisions: a single launcher, a file picker instead of a command line argument, an HTML
+          dashboard in the browser they already have open, and export options for the formats they
+          already pass around.
+        </p>
+        <p>
+          I also wrote a detailed user guide so a new coordinator can be onboarded without
+          hands-on training from us. The tool is moving into real operational use rather than
+          sitting in a repository.
+        </p>
+        <p>
+          Supervised by Dr. S. J. Youn at the University of Arizona, coordinated with the industry
+          sponsor. Teammates Sandhya Rangaswamy, Yashwin Krishnakanth S, Gaurv Singh and
+          Samarie Tavenner led other parts of the engagement.
+        </p>
+      </div>
+    </details>
+    <ul class="tags"><li>MILP</li><li>Decision support</li><li>Scheduling</li><li>Deployment</li></ul>
+  </article>
+
+  <article class="card">
+    <div class="card-meta"><span class="org-badge" aria-hidden="true">UA</span><span class="org">PhD research</span><span class="when">2021 - present</span></div>
+    <h3>RAMPSeg and in-situ quality monitoring for metal 3D printing</h3>
+    <p>
+      My dissertation is quality assurance in laser powder bed fusion: using process monitoring data
+      and machine learning to catch defects in aerospace alloys such as Inconel 718 and Haynes 282,
+      while the part is still being built rather than after it fails inspection.
+    </p>
+    <ul class="metrics">
+      <li><span class="n">0.90</span><span class="l">Dice score, RAMPSeg segmentation</span></li>
+      <li><span class="n">11x / 75x</span><span class="l">faster than SAM / CLIPSeg</span></li>
+      <li><span class="n">0.865</span><span class="l">F1, overheating detection</span></li>
+      <li><span class="n">+66.7%</span><span class="l">data utility from sensor synchronization</span></li>
+    </ul>
+    <details class="disc">
+      <summary>The four threads of the dissertation</summary>
+      <div class="disc-body">
+        <p>
+          <strong>Segmentation.</strong> RAMPSeg is a calibration-free melt pool segmentation method
+          reaching a Dice score near 0.90 with a standard deviation of 0.04, and it outperforms
+          thresholding, Otsu, Meta's SAM and OpenAI's CLIPSeg while running an order of magnitude
+          faster. Published in the Journal of Intelligent Manufacturing.
+        </p>
+        <p>
+          <strong>Anomaly detection.</strong> Ensemble models over real-time photodiode data detect
+          overheating layer by layer at F1 = 0.865, a 9.66% improvement over the prior state of the
+          art. Porosity models reach F1 = 0.879.
+        </p>
+        <p>
+          <strong>Knowledge representation.</strong> An ontological framework that structures defect
+          and causal-factor knowledge into a graph, so process planning decisions trace back to
+          evidence rather than to institutional memory. Finalist for the IISE Best Student Paper
+          Award in 2023.
+        </p>
+        <p>
+          <strong>Physics-guided modeling.</strong> Correlating thermal process history to
+          solidification microstructure with R squared between 0.90 and 0.95, cutting roughly 1.5
+          hours of analysis per case.
+        </p>
+        <p>
+          Carried out with NASA Glenn Research Center, Lockheed Martin, CompuTherm and ARCTOS. I have
+          presented this work at NAMRC, IISE and INFORMS, and co-led a Fulbright workshop on applied
+          AI for smart industrial systems in metal additive manufacturing.
+        </p>
+      </div>
+    </details>
+    <ul class="tags"><li>Image segmentation</li><li>Sensor fusion</li><li>Anomaly detection</li><li>Ontology</li><li>Additive manufacturing</li></ul>
+  </article>
+
+  <p class="sans"><a href="projects.html">The full project catalog, including self-driven work &rarr;</a></p>
+</div>
+</section>
+
+<section id="experience" class="tone-warm">
+<div class="wrap">
+  <div class="sec-head"><p class="sec-label"><span class="sec-n">02</span>Experience</p><h2>Where I have worked</h2><div class="sec-rule"></div></div>
+  <ol class="timeline">
+    <li>
+      <div class="tl-when">May - Aug 2026</div>
+      <div class="tl-what">
+        <h3>Data Science Intern, Enterprise Data and Advanced Analytics</h3>
+        <p class="where">Western Digital, San Jose, California</p>
+        <p>Built and delivered the supply allocation optimization engine above, and presented it to senior leadership.</p>
+      </div>
+    </li>
+    <li>
+      <div class="tl-when">Aug 2021 - present</div>
+      <div class="tl-what">
+        <h3>Graduate Researcher, Cyber-Physical Manufacturing Systems Lab</h3>
+        <p class="where">University of Arizona, Tucson</p>
+        <ul>
+          <li>Five peer-reviewed journal articles and one conference paper</li>
+          <li>Predictive models for porosity and overheating detection at F1 = 87.9% and 86.5%</li>
+          <li>Melt pool segmentation reaching 94% similarity to expert annotations</li>
+          <li>Data utility increased 66.7% through multi-sensor synchronization</li>
+          <li>Five conference presentations across NAMRC, IISE and INFORMS</li>
+          <li>Co-led a Fulbright workshop on applied AI for smart industrial systems</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="tl-when">Jan - Jul 2021</div>
+      <div class="tl-what">
+        <h3>Assistant Professor, Industrial and Production Engineering</h3>
+        <p class="where">Bangladesh University of Engineering and Technology</p>
+        <p>Lectured classes of 30 to 80 students, mentored student projects in CAD/CAM, programming and optimization, and contributed to curriculum planning and departmental initiatives.</p>
+      </div>
+    </li>
+    <li>
+      <div class="tl-when">Jul 2018 - Jan 2021</div>
+      <div class="tl-what">
+        <h3>Lecturer, Industrial and Production Engineering</h3>
+        <p class="where">Bangladesh University of Engineering and Technology</p>
+        <p>Designed and taught undergraduate courses across AutoCAD, SolidWorks, CATIA and MATLAB. Served as Department Secretary, coordinating grading, scheduling and academic affairs.</p>
+      </div>
+    </li>
+    <li>
+      <div class="tl-when">Apr 2017 - Jun 2018</div>
+      <div class="tl-what">
+        <h3>Lecturer</h3>
+        <p class="where">Ahsanullah University of Science and Technology, Dhaka</p>
+        <p>Taught classes of 40 to 70 students and supervised student projects in design, programming and optimization.</p>
+      </div>
+    </li>
+    <li>
+      <div class="tl-when">Mar - Apr 2016</div>
+      <div class="tl-what">
+        <h3>Industrial Engineering Trainee</h3>
+        <p class="where">LafargeHolcim Bangladesh</p>
+        <p>Built an analytical model of manual cement bag loading from a time study, and designed a palletized storage layout that raised inventory capacity by roughly 9.7%.</p>
+      </div>
+    </li>
+  </ol>
+  <p class="note">The 2017 to 2021 roles were full-time faculty appointments, not graduate teaching assistantships. The career timeline runs continuously from 2017.</p>
+</div>
+</section>
+
+<section id="education" class="tone-cream">
+<div class="wrap">
+  <div class="sec-head"><p class="sec-label"><span class="sec-n">03</span>Education</p><h2>Three degrees, and what was in them</h2><div class="sec-rule"></div></div>
+
+  <div class="degree">
+    <div class="badge" aria-hidden="true">P</div>
+    <h3>Ph.D., Systems and Industrial Engineering</h3>
+    <p class="inst">University of Arizona, Tucson</p>
+    <p class="meta">Aug 2021 - May 2027 expected <span class="sep">|</span> <span class="gpa-chip">GPA 4.00</span> <span class="sep">|</span> <span class="dist">Minor in Information</span></p>
+    <p><strong>Dissertation:</strong> Predicting and classifying microstructural and process defects in metal additive manufacturing using process monitoring and machine learning.</p>
+    <details class="disc">
+      <summary>Coursework: 17 graded courses, every one an A</summary>
+      <div class="disc-body">
+        <table class="courses">
+          <caption>University of Arizona, graded doctoral coursework</caption>
+          <thead><tr><th>Term</th><th>Code</th><th>Course</th><th>Grade</th></tr></thead>
+          <tbody>
+            <tr><td>Fall 2021</td><td class="code">MSE 540</td><td class="title">Metal Additive Manufacturing</td><td><span class="grade">A</span></td></tr>
+            <tr><td>Fall 2021</td><td class="code">SIE 530</td><td class="title">Engineering Statistics</td><td><span class="grade">A</span></td></tr>
+            <tr><td>Fall 2021</td><td class="code">SIE 545</td><td class="title">Fundamentals of Optimization</td><td><span class="grade">A</span></td></tr>
+            <tr><td>Spring 2022</td><td class="code">ECE 523</td><td class="title">Engineering Applications of Machine Learning</td><td><span class="grade">A</span></td></tr>
+            <tr><td>Spring 2022</td><td class="code">SIE 520</td><td class="title">Stochastic Modeling I</td><td><span class="grade">A</span></td></tr>
+            <tr><td>Spring 2022</td><td class="code">SIE 550</td><td class="title">Theory of Linear Systems</td><td><span class="grade">A</span></td></tr>
+            <tr><td>Fall 2022</td><td class="code">INFO 557</td><td class="title">Neural Networks</td><td><span class="grade">A</span></td></tr>
+            <tr><td>Fall 2022</td><td class="code">MSE 596A</td><td class="title">Physics-informed machine learning</td><td><span class="grade">A</span></td></tr>
+            <tr><td>Spring 2023</td><td class="code">ECE 532</td><td class="title">Digital Image Analysis</td><td><span class="grade">A</span></td></tr>
+            <tr><td>Spring 2023</td><td class="code">ECE 696B</td><td class="title">Robustness, fairness and privacy in machine learning</td><td><span class="grade">A</span></td></tr>
+            <tr><td>Fall 2023</td><td class="code">STAT 571A</td><td class="title">Advanced Statistical Regression Analysis</td><td><span class="grade">A</span></td></tr>
+            <tr><td>Spring 2024</td><td class="code">SIE 596</td><td class="title">Optimization for Machine Learning</td><td><span class="grade">A</span></td></tr>
+            <tr><td>Spring 2024</td><td class="code">STAT 574B</td><td class="title">Bayesian Statistical Theory and Applications</td><td><span class="grade">A</span></td></tr>
+            <tr><td>Fall 2024</td><td class="code">CSC 535</td><td class="title">Probabilistic Graphical Models</td><td><span class="grade">A</span></td></tr>
+            <tr><td>Fall 2025</td><td class="code">MIS 556</td><td class="title">Generative AI for Business</td><td><span class="grade">A</span></td></tr>
+            <tr><td>Spring 2026</td><td class="code">BNAD 597A</td><td class="title">Eller Business Consulting</td><td><span class="grade">A</span></td></tr>
+            <tr><td>Spring 2026</td><td class="code">INFO 579</td><td class="title">SQL and NoSQL Databases</td><td><span class="grade">A</span></td></tr>
+          </tbody>
+        </table>
+        <p class="scale-note">
+          Also enrolled in a doctoral colloquium, dissertation research, and SIE 593 Internship,
+          under which the Western Digital placement carried academic credit.
+        </p>
+      </div>
+    </details>
+  </div>
+
+  <div class="degree">
+    <div class="badge" aria-hidden="true">M</div>
+    <h3>M.Sc., Industrial and Production Engineering</h3>
+    <p class="inst">Bangladesh University of Engineering and Technology, Dhaka</p>
+    <p class="meta">Apr 2017 - Feb 2020 <span class="sep">|</span> <span class="gpa-chip">GPA 3.83</span></p>
+    <p><strong>Thesis:</strong> Robust and reliability-based multidisciplinary optimization of an injection molding system.</p>
+    <details class="disc">
+      <summary>Coursework: 6 theory courses and thesis</summary>
+      <div class="disc-body">
+        <table class="courses">
+          <caption>BUET, M.Sc. coursework</caption>
+          <thead><tr><th>Code</th><th>Course</th><th>Credits</th><th>Grade</th></tr></thead>
+          <tbody>
+            <tr><td class="code">IPE 6207</td><td class="title">Growth and Management of Technology</td><td>3</td><td><span class="grade">A+</span></td></tr>
+            <tr><td class="code">IPE 6008</td><td class="title">Advanced Manufacturing Process</td><td>3</td><td><span class="grade mid">B+</span></td></tr>
+            <tr><td class="code">IPE 6112</td><td class="title">Probabilistic Methods in Engineering Design</td><td>3</td><td><span class="grade">A+</span></td></tr>
+            <tr><td class="code">IPE 6117</td><td class="title">Engineering Design Optimization</td><td>3</td><td><span class="grade">A+</span></td></tr>
+            <tr><td class="code">IPE 6113</td><td class="title">Engineering Data Analysis</td><td>3</td><td><span class="grade">A+</span></td></tr>
+            <tr><td class="code">AEM 6210</td><td class="title">Logistics Management</td><td>3</td><td><span class="grade">A+</span></td></tr>
+            <tr><td class="code">IPE 6000</td><td class="title">Thesis</td><td>18</td><td><span class="grade">S</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+
+  <div class="degree">
+    <div class="badge" aria-hidden="true">B</div>
+    <h3>B.Sc., Industrial and Production Engineering <span class="dist">with Honours</span></h3>
+    <p class="inst">Bangladesh University of Engineering and Technology, Dhaka</p>
+    <p class="meta">Apr 2012 - Feb 2017 <span class="sep">|</span> <span class="gpa-chip">GPA 3.93</span> <span class="sep">|</span> <span class="dist">Ranked 2nd of 35</span></p>
+    <p>161.75 credits earned of 161.75 required. The highest GPA in the graduating class was 3.98.</p>
+    <details class="disc">
+      <summary>Coursework: the full term-by-term record</summary>
+      <div class="disc-body">
+        <div class="term-block">
+          <h4>Level 1, Term 1 <span class="gpa">Apr 2012 - Feb 2013, term GPA 3.96</span></h4>
+          <p>Inorganic Quantitative Analysis Sessional <span class="g">A+</span> &middot; Chemistry I <span class="g">A+</span> &middot; English Language Practice <span class="g">A-</span> &middot; Sociology <span class="g">A+</span> &middot; Principles of Cost and Management Accounting <span class="g">A+</span> &middot; Differential and Integral Calculus <span class="g">A+</span> &middot; Mechanical Engineering Drawing I <span class="g">A+</span> &middot; Structure of Matter, Electricity, Magnetism and Modern Physics <span class="g">A+</span> &middot; Machine Shop <span class="g">A+</span></p>
+        </div>
+        <div class="term-block">
+          <h4>Level 1, Term 2 <span class="gpa">Feb 2013 - Nov 2013, term GPA 4.00</span></h4>
+          <p>Chemistry of Materials <span class="g">A+</span> &middot; Basic Electrical and Electronic Circuit <span class="g">A+</span> &middot; Basic Electrical and Electronic Circuit Sessional <span class="g">A+</span> &middot; Engineering Graphics <span class="g">A+</span> &middot; Vector, Matrix and Solid Geometry <span class="g">A+</span> &middot; Engineering Materials I <span class="g">A+</span> &middot; Physics Sessional <span class="g">A+</span> &middot; Waves and Oscillations, Physical Optics and Wave Mechanics <span class="g">A+</span> &middot; Foundry and Welding Shop <span class="g">A+</span></p>
+        </div>
+        <div class="term-block">
+          <h4>Level 2, Term 1 <span class="gpa">Nov 2013 - Jul 2014, term GPA 3.84</span></h4>
+          <p>Computer Programming Techniques <span class="g">A+</span> &middot; Computer Programming Techniques Sessional <span class="g">A+</span> &middot; Electrical Machines and Electronics <span class="g">A+</span> &middot; Electrical Machines and Electronics Sessional <span class="g">A+</span> &middot; Engineering Graphics and Introduction to CAD Sessional <span class="g">A+</span> &middot; Differential Equation, Vector Calculus and Laplace Transform <span class="g">A+</span> &middot; Engineering Mechanics and Theory of Machines <span class="g">B+</span> &middot; Engineering Materials II <span class="g">A+</span> &middot; Engineering Materials Sessional <span class="g">A</span></p>
+        </div>
+        <div class="term-block">
+          <h4>Level 2, Term 2 <span class="gpa">Jul 2014 - Feb 2015, term GPA 3.96</span></h4>
+          <p>Manufacturing Processes I <span class="g">A+</span> &middot; Manufacturing Processes I Sessional <span class="g">A+</span> &middot; Probability and Statistics <span class="g">A+</span> &middot; Engineering Economy <span class="g">A+</span> &middot; Mechanics of Solids <span class="g">A+</span> &middot; Mechanics of Solids Sessional <span class="g">A+</span> &middot; Thermodynamics and Heat Transfer <span class="g">A+</span> &middot; Thermodynamics and Heat Transfer Sessional <span class="g">A-</span></p>
+        </div>
+        <div class="term-block">
+          <h4>Level 3, Term 1 <span class="gpa">Jan 2015 - Sep 2015, term GPA 3.84</span></h4>
+          <p>Fundamentals of Economics <span class="g">A+</span> &middot; Measurement, Instrumentation and Control <span class="g">A+</span> &middot; Measurement, Instrumentation and Control Sessional <span class="g">A+</span> &middot; Manufacturing Process II <span class="g">A+</span> &middot; Manufacturing Processes II Sessional <span class="g">A+</span> &middot; Operations Research <span class="g">B+</span> &middot; Fluid Mechanics and Machinery <span class="g">A+</span> &middot; Fluid Mechanics and Machinery Sessional <span class="g">A+</span></p>
+        </div>
+        <div class="term-block">
+          <h4>Level 3, Term 2 <span class="gpa">Jul 2015 - Feb 2016, term GPA 3.95</span></h4>
+          <p>Product Design I <span class="g">A+</span> &middot; Product Design I Sessional <span class="g">A+</span> &middot; Material Handling and Maintenance Management <span class="g">A+</span> &middot; Material Handling and Maintenance Management Sessional <span class="g">A+</span> &middot; Operations Management <span class="g">A+</span> &middot; Quality Management <span class="g">A+</span> &middot; Quality Management Sessional <span class="g">A+</span> &middot; Business Communication Seminar I <span class="g">A</span> &middot; Numerical Analysis <span class="g">A</span></p>
+        </div>
+        <div class="term-block">
+          <h4>Level 4, Term 1 <span class="gpa">Jan 2016 - Aug 2016, term GPA 3.94</span></h4>
+          <p>Industrial Practice <span class="g">A+</span> &middot; Product Design II <span class="g">A+</span> &middot; Product Design II Sessional <span class="g">B+</span> &middot; Project and Environmental Management <span class="g">A+</span> &middot; Ergonomics and Safety Management <span class="g">A+</span> &middot; Ergonomics and Safety Management Sessional <span class="g">A+</span> &middot; Computer Integrated Manufacturing <span class="g">A+</span> &middot; Supply Chain Management <span class="g">A+</span></p>
+        </div>
+        <div class="term-block">
+          <h4>Level 4, Term 2 <span class="gpa">Jul 2016 - Feb 2017, term GPA 3.97</span></h4>
+          <p>Project and Thesis <span class="g">A+</span> &middot; Machine Tools <span class="g">A+</span> &middot; Machine Tools Sessional <span class="g">A+</span> &middot; CAD/CAM <span class="g">A+</span> &middot; CAD/CAM Sessional <span class="g">A+</span> &middot; Industrial and Business Management <span class="g">A</span> &middot; Marketing Management <span class="g">A+</span> &middot; Industrial Simulation Sessional <span class="g">A+</span> &middot; Business Communication Seminar II <span class="g">A+</span></p>
+        </div>
+        <p class="scale-note">
+          BUET grading scale: A+ = 4.00 (80% and above), A = 3.75, A- = 3.50, B+ = 3.25, B = 3.00.
+          A+ is the top grade available.
+        </p>
+      </div>
+    </details>
+  </div>
+
+  <p class="note">Earlier: Higher Secondary Certificate, Notre Dame College Dhaka, GPA 5.00 of 5.00. Secondary School Certificate, Ideal School and College Dhaka, GPA 5.00 of 5.00.</p>
+</div>
+</section>
+
+<section id="skills" class="tone-warm">
+<div class="wrap">
+  <div class="sec-head"><p class="sec-label"><span class="sec-n">04</span>Skills</p><h2>Tools and methods</h2><div class="sec-rule"></div></div>
+
+  <div class="filter-wrap">
+    <label for="skill-filter">Looking for something specific? Filter the list.</label>
+    <input type="search" id="skill-filter" placeholder="Try: optimization, vision, SQL, Streamlit" autocomplete="off">
+    <p class="filter-count" id="filter-count" role="status" aria-live="polite"></p>
+  </div>
+
+  <div class="skills-grid" id="skills-grid">
+    <div class="skill-group">
+      <h3>Machine learning</h3>
+      <ul><li>Supervised learning</li><li>Unsupervised learning</li><li>Ensemble methods</li><li>Random Forest</li><li>K-nearest neighbors</li><li>Deep learning</li><li>CNN</li><li>RNN</li><li>Transformers</li><li>Vision transformers</li><li>Physics-guided ML</li><li>Statistical modeling</li><li>Regression</li><li>Bayesian methods</li><li>Probabilistic graphical models</li></ul>
+    </div>
+    <div class="skill-group">
+      <h3>Computer vision</h3>
+      <ul><li>Image segmentation</li><li>Object detection</li><li>Industrial inspection</li><li>Melt pool analysis</li><li>Morphological processing</li><li>OpenCV</li><li>Ultralytics YOLO</li><li>CVAT</li><li>SAM</li><li>CLIPSeg</li><li>Zero-shot learning</li></ul>
+    </div>
+    <div class="skill-group">
+      <h3>Optimization and OR</h3>
+      <ul><li>Linear programming</li><li>Mixed-integer linear programming</li><li>Max-min fairness</li><li>Multi-objective optimization</li><li>Multidisciplinary design optimization</li><li>Robustness-based optimization</li><li>Reliability-based optimization</li><li>Genetic algorithms</li><li>FICO Xpress</li><li>Stochastic modeling</li></ul>
+    </div>
+    <div class="skill-group">
+      <h3>Generative AI and NLP</h3>
+      <ul><li>Large language models</li><li>Prompt engineering</li><li>Fine-tuning</li><li>Foundation models</li><li>Sentiment analysis</li><li>Knowledge graphs</li><li>Ontology engineering</li></ul>
+    </div>
+    <div class="skill-group">
+      <h3>Programming and data</h3>
+      <ul><li>Python</li><li>SQL</li><li>MATLAB</li><li>R</li><li>Pandas</li><li>NumPy</li><li>SciPy</li><li>Scikit-learn</li><li>TensorFlow</li><li>PyTorch</li><li>Keras</li><li>MLflow</li><li>Oracle SQL</li><li>NoSQL</li><li>DBeaver</li><li>Jupyter</li><li>Git</li></ul>
+    </div>
+    <div class="skill-group">
+      <h3>Delivery and visualization</h3>
+      <ul><li>Streamlit</li><li>Plotly</li><li>Power BI</li><li>Matplotlib</li><li>Seaborn</li><li>JMP</li><li>Minitab</li><li>Excel</li><li>Data pipelines</li><li>Technical documentation</li></ul>
+    </div>
+    <div class="skill-group">
+      <h3>Industrial engineering</h3>
+      <ul><li>Quality management</li><li>Quality assurance</li><li>Root cause analysis</li><li>Process optimization</li><li>Lean manufacturing</li><li>Continuous improvement</li><li>Operations management</li><li>Supply chain management</li><li>Demand forecasting</li><li>Project management</li><li>Time study</li><li>Ergonomics</li></ul>
+    </div>
+    <div class="skill-group">
+      <h3>Design and manufacturing</h3>
+      <ul><li>AutoCAD</li><li>SolidWorks</li><li>CATIA</li><li>CAD/CAM</li><li>Computer integrated manufacturing</li><li>Laser powder bed fusion</li><li>Metal additive manufacturing</li><li>Inconel 718</li><li>Haynes 282</li><li>Injection molding</li></ul>
+    </div>
+  </div>
+
+  <div class="certs">
+    <h3 class="sub-head">Certifications and professional development</h3>
+    <div class="cert-grid">
+      <div class="cert-group">
+        <h4>Cloud and AI</h4>
+        <ul>
+          <li>Microsoft Azure AI Essentials Professional Certificate <span class="issuer">- Microsoft, 2025</span></li>
+          <li>Azure AI Essentials: Workloads and Machine Learning on Azure <span class="issuer">- LinkedIn, 2025</span></li>
+          <li>Hands-On AI: Computer Vision Projects with Ultralytics and OpenCV <span class="issuer">- LinkedIn, 2025</span></li>
+        </ul>
+      </div>
+      <div class="cert-group">
+        <h4>Data and business intelligence</h4>
+        <ul>
+          <li>SQL for Data Analysis <span class="issuer">- LinkedIn, 2025</span></li>
+          <li>Using Power BI with Excel <span class="issuer">- LinkedIn, 2025</span></li>
+          <li>Power BI Essential Training <span class="issuer">- LinkedIn, 2025</span></li>
+        </ul>
+      </div>
+      <div class="cert-group">
+        <h4>Programming and computer science</h4>
+        <ul>
+          <li>Programming Foundations: Algorithms <span class="issuer">- LinkedIn, 2026</span></li>
+          <li>Programming Foundations: Data Structures <span class="issuer">- LinkedIn, 2025</span></li>
+          <li>Python Data Structures and Algorithms <span class="issuer">- LinkedIn, 2025</span></li>
+          <li>Python for Everybody, five-course series <span class="issuer">- Coursera, 2020</span></li>
+          <li>MATLAB, three-course series <span class="issuer">- Coursera, 2020</span></li>
+          <li>Introduction to R and Intermediate R <span class="issuer">- DataCamp, 2021</span></li>
+        </ul>
+      </div>
+      <div class="cert-group">
+        <h4>Manufacturing</h4>
+        <ul>
+          <li>Design for Metal Additive Manufacturing <span class="issuer">- EOS, 2025</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="honors" class="tone-cream">
+<div class="wrap">
+  <div class="sec-head"><p class="sec-label"><span class="sec-n">05</span>Honors</p><h2>Recognition</h2><div class="sec-rule"></div></div>
+  <ul class="plain honors">
+    <li><strong>1st place</strong>, IISE QCRE Data Challenge <span class="yr">2026</span></li>
+    <li><strong>1st place</strong>, Poster Competition, SIE GradSlamX, University of Arizona <span class="yr">2025</span></li>
+    <li><strong>Winner</strong>, IISE Arizona Professional Chapter Presentation Award <span class="yr">2025</span></li>
+    <li><strong>Winner</strong>, Poster Prize, Innovation in Graduate Education, University of Arizona <span class="yr">2025</span></li>
+    <li><strong>2nd place</strong>, Poster Competition, SIE GradSlamX, University of Arizona <span class="yr">2024</span></li>
+    <li><strong>Outstanding Teaching Assistant Award</strong>, Systems and Industrial Engineering, University of Arizona <span class="yr">2024</span></li>
+    <li><strong>Finalist</strong>, Best Student Paper Award, Manufacturing and Design Division, IISE <span class="yr">2023</span></li>
+    <li><strong>Merit position 2 of 35</strong>, B.Sc. graduating class, BUET <span class="yr">2017</span></li>
+    <li><strong>Champion</strong>, CAD Competition, IPE Fiesta, BUET <span class="yr">2016</span></li>
+    <li><strong>1st runner-up</strong>, CAD Competition, Mechanical Festival, BUET <span class="yr">2016</span></li>
+  </ul>
+</div>
+</section>
+
+<section id="recommendations" class="tone-dark">
+<div class="wrap">
+  <div class="sec-head"><p class="sec-label"><span class="sec-n">06</span>References</p><h2>What colleagues say</h2><div class="sec-rule"></div></div>
+  <p class="lede">Written on LinkedIn by colleagues, managers and mentors. Each one opens to its full text.</p>
+
+  <div class="quotes">
+
+    <div class="quote">
+      <blockquote><p>&ldquo;I&rsquo;ve been incredibly impressed by his technical expertise, how quickly he grasps complex business concepts, and most importantly how effectively he brings the two together to deliver solutions that make a meaningful impact on our business.&rdquo;</p></blockquote>
+      <p class="who">Sameera Kodagoda</p>
+      <p class="role">Senior Director, Data Science, Enterprise Data and Advanced Analytics, Western Digital <span class="rel">&middot; internship leadership &middot; August 2026</span></p>
+      <details class="disc">
+        <summary>Read the full post</summary>
+        <div class="disc-body">
+          <blockquote>
+            <p>&ldquo;Nazmul Hasan was truly an all-star intern at WD this summer.</p>
+            <p>I&rsquo;ve been incredibly impressed by his technical expertise, how quickly he grasps complex business concepts, and most importantly how effectively he brings the two together to deliver solutions that make a meaningful impact on our business.</p>
+            <p>Nazmul, it&rsquo;s been a pleasure working with you and watching you grow and contribute this summer. Wishing you all the very best in your next chapter, you&rsquo;re going to do great things!&rdquo;</p>
+          </blockquote>
+          <p class="src-note">Posted publicly on LinkedIn, August 2026.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="quote">
+      <blockquote><p>&ldquo;Nazmul is the kind of colleague who elevates the work of a group. He takes challenges seriously, but never in a way that overshadows the people around him.&rdquo;</p></blockquote>
+      <p class="who">Habibor Rahman</p>
+      <p class="role">Assistant Professor, University of South Carolina <span class="rel">&middot; worked on the same team &middot; October 2025</span></p>
+      <details class="disc">
+        <summary>Read the full recommendation</summary>
+        <div class="disc-body">
+          <blockquote>
+            <p>&ldquo;I have had the opportunity to work with Nazmul and have been consistently impressed by his sincerity. What I value most is that he does not just bring strong technical skills to the table &mdash; he brings curiosity, patience, and a genuine willingness to listen and build on the ideas of others. Nazmul is the kind of colleague who elevates the work of a group. He takes challenges seriously, but never in a way that overshadows the people around him. Instead, he creates an environment where others feel encouraged to contribute, and he is generous in sharing both knowledge and credit. These qualities make him not only effective in his own right but also a catalyst for collective progress.</p>
+            <p>Nazmul will thrive in any setting that values rigor, creativity, and collaboration, and I recommend him with great confidence.&rdquo;</p>
+          </blockquote>
+        </div>
+      </details>
+    </div>
+
+    <div class="quote">
+      <blockquote><p>&ldquo;He has this rare combination of technical depth and interpersonal skill that he brings to his work. Nazmul is exceptional in communicating knowledge in a simple and effective way.&rdquo;</p></blockquote>
+      <p class="who">Farouk Abdulhamid</p>
+      <p class="role">Postdoctoral Researcher, Politecnico di Milano <span class="rel">&middot; worked on the same team &middot; October 2025</span></p>
+      <details class="disc">
+        <summary>Read the full recommendation</summary>
+        <div class="disc-body">
+          <blockquote>
+            <p>&ldquo;I met and worked with Nazmul Hasan during my time as a visiting scholar at the University of Arizona, and during my stay, I witnessed his skills as a distinguished researcher and a genuinely supportive colleague and friend. He has this rare combination of technical depth and interpersonal skill that he brings to his work. Nazmul is exceptional in communicating knowledge in a simple and effective way. My interactions with Nazmul helped me adopt new manuscript writing techniques and routines that helped me better cope with academic stress. His willingness to selflessly impart knowledge is second to none, and a key aspect of that is his ability to critique and communicate clearly without making you feel intimidated. He is quite meticulous and thorough in his work, whether it is installing software, mentoring students, or working on complex research problems.</p>
+            <p>I would proudly recommend Nazmul as a researcher and engineering expert to any interested party, and I believe he would be a great addition to any team.&rdquo;</p>
+          </blockquote>
+        </div>
+      </details>
+    </div>
+
+    <div class="quote">
+      <blockquote><p>&ldquo;Students consistently seek him out for clarity and direction, and his mentorship fosters belonging and confidence in others.&rdquo;</p></blockquote>
+      <p class="who">Cindy Nguyen</p>
+      <p class="role">Director of Graduate Admissions and Degree Services, University of Arizona <span class="rel">&middot; mentor &middot; November 2025</span></p>
+      <details class="disc">
+        <summary>Read the full recommendation</summary>
+        <div class="disc-body">
+          <blockquote>
+            <p>&ldquo;Nazmul is a doctoral candidate whose influence extends beyond his academic work.</p>
+            <p>In the 2023&ndash;24 academic year, Nazmul was recognized with the department&rsquo;s Outstanding Graduate Teaching Assistant award. While the nomination reflects his excellence in teaching support, his impact goes far beyond any one recognition. He embodies teaching as the backbone of his work not just in the classroom, but in the community he helps shape. Students consistently seek him out for clarity and direction, and his mentorship fosters belonging and confidence in others. A system is only as good as the people who understand its nuances, and when shaping student programming, I regularly turned to him as a thought partner because his insight into the student experience was honest, grounded, and truly collaborative.</p>
+            <p>Any team that works with Nazmul gains a strong, thoughtful researcher who brings people together naturally.&rdquo;</p>
+          </blockquote>
+        </div>
+      </details>
+    </div>
+
+    <div class="quote">
+      <blockquote><p>&ldquo;He consistently receives and applies constructive feedback with professionalism and a genuine desire to grow, which makes him an exceptional collaborator and learner.&rdquo;</p></blockquote>
+      <p class="who">Amanda Bogden, PhD</p>
+      <p class="role">Associate Director of Graduate Career Services, University of Arizona <span class="rel">&middot; teacher &middot; October 2025</span></p>
+      <details class="disc">
+        <summary>Read the full recommendation</summary>
+        <div class="disc-body">
+          <blockquote>
+            <p>&ldquo;It has been a pleasure working with Nazmul, whose openness to feedback and dedication to continuous improvement truly stand out. He consistently receives and applies constructive feedback with professionalism and a genuine desire to grow, which makes him an exceptional collaborator and learner.</p>
+            <p>Nazmul brings curiosity and initiative to every project. He actively seeks out new ideas, explores emerging resources, and generously shares them with others to strengthen team learning and innovation. His collaborative spirit and resourcefulness help create an environment where knowledge is shared freely and progress is achieved collectively. Nazmul&rsquo;s adaptability, reflective mindset, and enthusiasm for shared learning make him a valuable contributor to any academic or professional team.&rdquo;</p>
+          </blockquote>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<section id="contact" class="tone-warm">
+<div class="wrap">
+  <div class="sec-head"><p class="sec-label"><span class="sec-n">07</span>Contact</p><h2>Get in touch</h2><div class="sec-rule"></div></div>
+  <p class="lede">
+    Email is the fastest way to reach me. I am glad to talk about manufacturing data, optimization
+    that has to survive contact with real operations, or anything in the work above.
+  </p>
+  <p class="big-link"><a href="mailto:nazmul.ipe.buet@gmail.com">nazmul.ipe.buet@gmail.com</a></p>
+</div>
+</section>
+
+</main>
+
+<button id="to-top" type="button" aria-label="Back to top">&uarr;</button>
+
+<footer>
+<div class="foot-inner">
+  <p>Nazmul Hasan &middot; Tucson, Arizona</p>
+  <p class="foot-links">
+    <a href="https://www.linkedin.com/in/nazmul202">LinkedIn</a>
+    <a href="https://github.com/nazmulhasan202">GitHub</a>
+    <a href="https://scholar.google.com/citations?user=4dKkCjIAAAAJ&amp;hl=en">Scholar</a>
+    <a href="https://orcid.org/0000-0002-9303-4618">ORCID</a>
+  </p>
+</div>
+</footer>
+
+<script src="site.js" defer></script>
+</body>
+</html>
