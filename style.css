@@ -589,3 +589,26 @@ footer a:hover { color: #fff; text-decoration: underline; }
 .photo-wall.tiles .shot { margin: 0; }
 .photo-wall.tiles .shot img { height: 13rem; object-fit: contain; background: #fff; }
 .photo-wall.tiles .shot.cover img { object-fit: cover; }
+
+/* ---------- carousel (several photos of one event) ---------- */
+
+.carousel { position: relative; }
+.car-track {
+  display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  border: 1px solid var(--rule); border-radius: 8px; background: #f1ede6;
+  scrollbar-width: none;
+}
+.car-track::-webkit-scrollbar { display: none; }
+.car-track:focus-visible { outline: 2px solid var(--amber-600); outline-offset: 3px; }
+.car-slide { flex: 0 0 100%; scroll-snap-align: start; display: block; aspect-ratio: 4 / 3; border: 0 !important; border-radius: 0 !important; }
+.carousel .car-slide img { width: 100%; height: 100%; object-fit: contain; }
+.car-ctrl { display: flex; align-items: center; justify-content: center; gap: 0.9rem; margin-top: 0.5rem; }
+.car-ctrl[hidden] { display: none; }
+.car-ctrl button {
+  width: 2rem; height: 2rem; border-radius: 50%; border: 1px solid var(--lav-line);
+  background: #fff; color: var(--plum-ink); font-size: 1.2rem; line-height: 1; cursor: pointer;
+}
+.car-ctrl button:hover { background: var(--plum-800); color: var(--amber-300); border-color: var(--plum-800); }
+.car-ctrl button:focus-visible { outline: 2px solid var(--amber-600); outline-offset: 2px; }
+.car-count { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.78rem; color: var(--muted); min-width: 3rem; text-align: center; }
+@media (prefers-reduced-motion: reduce) { .car-track { scroll-behavior: auto; } }

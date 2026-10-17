@@ -154,6 +154,31 @@
   window.addEventListener("hashchange", openTarget);
   openTarget();
 
+  /* ---- photo carousels (several photos of one event) ---- */
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-carousel]"), function (car) {
+    var track = car.querySelector(".car-track");
+    var ctrl = car.querySelector(".car-ctrl");
+    var count = car.querySelector(".car-count");
+    var prev = car.querySelector(".car-prev");
+    var next = car.querySelector(".car-next");
+    var slides = track.querySelectorAll(".car-slide");
+    if (!track || !ctrl || slides.length < 2) return;
+    ctrl.hidden = false;
+
+    function index() { return Math.round(track.scrollLeft / track.clientWidth); }
+    function update() { count.textContent = (index() + 1) + " / " + slides.length; }
+    function go(step) {
+      var i = Math.max(0, Math.min(slides.length - 1, index() + step));
+      track.scrollTo({ left: i * track.clientWidth });
+    }
+    prev.addEventListener("click", function () { go(-1); });
+    next.addEventListener("click", function () { go(1); });
+    track.addEventListener("scroll", function () { window.requestAnimationFrame(update); });
+    window.addEventListener("resize", update);
+    update();
+  });
+
   /* ---- expand all disclosures before printing ---- */
 
   var reopened = [];
