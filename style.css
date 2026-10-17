@@ -615,3 +615,73 @@ footer a:hover { color: #fff; text-decoration: underline; }
 
 .photo-wall.tiles .carousel .car-slide { aspect-ratio: auto; height: 13rem; }
 .photo-wall.tiles .carousel .car-slide img { height: 100%; background: transparent; }
+
+/* ---------- fixed profile sidebar (wide screens) ---------- */
+
+.side { display: none; }
+.side-id { display: flex; flex-direction: column; align-items: flex-start; gap: 0.9rem; text-decoration: none; }
+.side-photo {
+  width: 7.5rem; height: 7.5rem; border-radius: 50%; object-fit: cover; object-position: 50% 15%;
+  background: var(--cream); border: 3px solid #fff; box-shadow: 0 8px 22px rgba(36, 26, 61, 0.22);
+}
+.side-name { font-size: 1.45rem; font-weight: 700; color: var(--plum-ink); letter-spacing: -0.015em; line-height: 1.15; }
+.side-role {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-600); margin: 0;
+}
+.side-bio { font-size: 0.92rem; line-height: 1.55; color: var(--ink-soft); margin: 0; }
+.side-links, .side-nav { list-style: none; padding: 0; margin: 0; }
+.side-links { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.9rem; }
+.side-links a { color: var(--amber-700); }
+.side-links .copy-btn { font-size: 0.78rem; color: var(--muted); margin-left: 0.3rem; }
+.side-nav {
+  display: flex; flex-direction: column; gap: 0.1rem; margin-top: 0.4rem; padding-top: 1.1rem;
+  border-top: 1px solid var(--lav-line);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.76rem; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.side-nav a {
+  display: block; padding: 0.38rem 0 0.38rem 0.8rem; color: var(--ink-soft); text-decoration: none;
+  border-left: 3px solid transparent;
+}
+.side-nav a:hover { color: var(--amber-600); }
+.side-nav a.current { color: var(--plum-ink); font-weight: 700; border-left-color: var(--amber-500); }
+
+@media (min-width: 62rem) {
+  .site-head { display: none; }
+  .shell { display: grid; grid-template-columns: 17.5rem minmax(0, 1fr); align-items: start; }
+  .side {
+    display: block; position: sticky; top: 0; height: 100vh; overflow-y: auto;
+    background: var(--lavender); border-right: 1px solid var(--lav-line);
+  }
+  .side-inner { display: flex; flex-direction: column; gap: 1.1rem; padding: 2.2rem 1.6rem 1.8rem; }
+  .content { min-width: 0; }
+  section { scroll-margin-top: 1rem; }
+  .wrap { max-width: 56rem; }
+
+  /* the profile now lives in the sidebar, so keep only a screen-reader heading here */
+  .hero .identity {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0;
+  }
+  .hero .links { display: none; }
+  .hero { padding: 4rem 0 3.5rem; }
+}
+
+/* metrics sit in a right-hand rail beside the text, so wide screens are not left half empty */
+@media (min-width: 76rem) {
+  .card:has(> .metrics) { display: grid; grid-template-columns: minmax(0, 1fr) 15.5rem; column-gap: 2.6rem; }
+  .card:has(> .metrics) > * { grid-column: 1; }
+  .card:has(> .metrics) > .metrics {
+    grid-column: 2; grid-row: 3 / span 8; align-self: start; margin: 0.25rem 0 0;
+    grid-template-columns: 1fr; gap: 1.05rem; padding: 1.15rem 1.25rem;
+  }
+  .card:has(> .metrics) p { max-width: none; }
+  .card:has(> .metrics) details.disc { margin-top: 0.4rem; }
+}
+
+@media (min-width: 62rem) {
+  .card p { max-width: 44rem; }
+}
+@media (min-width: 76rem) {
+  .stats { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
