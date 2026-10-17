@@ -561,3 +561,31 @@ footer a:hover { color: #fff; text-decoration: underline; }
 @media (min-width: 46rem) {
   .portrait img { width: 9.5rem; height: 9.5rem; }
 }
+
+/* ---------- photo walls and figures ---------- */
+
+.photo-wall { columns: 3 15rem; column-gap: 1.2rem; margin: 2.2rem 0 0; padding: 0; list-style: none; }
+.photo-wall .shot { break-inside: avoid; margin: 0 0 1.4rem; }
+.shot { margin: 0; }
+.shot a { display: block; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; background: #fff; }
+.shot img { display: block; width: 100%; height: auto; }
+.shot a:hover { border-color: var(--amber-500); }
+.shot a:focus-visible { outline: 2px solid var(--amber-600); outline-offset: 3px; }
+.shot figcaption { font-size: 0.84rem; line-height: 1.45; color: var(--ink-soft); margin-top: 0.55rem; }
+.shot figcaption strong { color: var(--plum-ink); font-weight: 700; }
+.wall-label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--amber-600); margin: 2.4rem 0 0;
+}
+
+.card-figs { display: flex; flex-wrap: wrap; gap: 1.2rem; margin: 1.2rem 0 0.4rem; }
+.card-figs .shot { flex: 1 1 14rem; max-width: 26rem; }
+.card-figs .shot img { background: #fff; }
+.shot.small { flex: 0 1 11rem; }
+.shot.small img { padding: 0.6rem; }
+
+.photo-wall.tiles { columns: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: 1.4rem 1.2rem; align-items: start; }
+.photo-wall.tiles .shot { margin: 0; }
+.photo-wall.tiles .shot img { height: 13rem; object-fit: contain; background: #fff; }
+.photo-wall.tiles .shot.cover img { object-fit: cover; }
