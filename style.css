@@ -612,3 +612,6 @@ footer a:hover { color: #fff; text-decoration: underline; }
 .car-ctrl button:focus-visible { outline: 2px solid var(--amber-600); outline-offset: 2px; }
 .car-count { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.78rem; color: var(--muted); min-width: 3rem; text-align: center; }
 @media (prefers-reduced-motion: reduce) { .car-track { scroll-behavior: auto; } }
+
+.photo-wall.tiles .carousel .car-slide { aspect-ratio: auto; height: 13rem; }
+.photo-wall.tiles .carousel .car-slide img { height: 100%; background: transparent; }
