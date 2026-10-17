@@ -685,3 +685,22 @@ footer a:hover { color: #fff; text-decoration: underline; }
 @media (min-width: 76rem) {
   .stats { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 }
+
+/* ---------- sidebar fits short windows (laptops, zoomed browsers) ---------- */
+
+@media (min-width: 62rem) {
+  .side-photo { width: clamp(4.6rem, 15vh, 7.5rem); height: clamp(4.6rem, 15vh, 7.5rem); }
+  .side-inner { gap: clamp(0.6rem, 1.8vh, 1.1rem); padding-top: clamp(1.1rem, 3.5vh, 2.2rem); }
+}
+@media (min-width: 62rem) and (max-height: 760px) {
+  .side-bio { display: none; }
+  .side-links { font-size: 0.84rem; gap: 0.15rem; }
+  .side-nav { padding-top: 0.6rem; margin-top: 0; font-size: 0.72rem; }
+  .side-nav a { padding-top: 0.26rem; padding-bottom: 0.26rem; }
+  .side-name { font-size: 1.25rem; }
+}
+@media (min-width: 62rem) and (max-height: 640px) {
+  .side-role { display: none; }
+  .side-links { flex-direction: row; flex-wrap: wrap; gap: 0.1rem 0.8rem; }
+  .side-nav a { padding-top: 0.2rem; padding-bottom: 0.2rem; }
+}
