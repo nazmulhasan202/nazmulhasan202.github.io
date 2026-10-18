@@ -821,3 +821,6 @@ footer a:hover { color: #fff; text-decoration: underline; }
   .side-inner { padding-top: 1.1rem; gap: 0.7rem; }
   .side-values { padding-top: 0.6rem; padding-bottom: 0.7rem; }
 }
+@media (min-width: 62rem) {
+  .side-photo { width: 7.5rem; height: 7.5rem; }
+}
