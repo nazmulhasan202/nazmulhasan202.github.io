@@ -689,7 +689,7 @@ footer a:hover { color: #fff; text-decoration: underline; }
   .card p { max-width: 44rem; }
 }
 @media (min-width: 76rem) {
-  .stats { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
 /* ---------- sidebar: values card, link buttons (spacious; the panel scrolls on short windows) ---------- */
@@ -727,3 +727,33 @@ footer a:hover { color: #fff; text-decoration: underline; }
   border-radius: 0; border-left: 1px solid rgba(240, 195, 124, 0.35); font-weight: 600; color: var(--amber-300);
 }
 .side-links .copy-btn.done { color: var(--amber-500); }
+
+/* ---------- area colors: optimization, data science, applied AI/ML ---------- */
+
+:root { --c-opt: #ffc65c; --c-ds: #5fe3c7; --c-ml: #b69cff; --c-cv: #ff8fc1; }
+.tagline .c-opt { color: var(--c-opt); }
+.tagline .c-ds { color: var(--c-ds); }
+.tagline .c-ai {
+  color: var(--c-ml);
+  background: linear-gradient(90deg, var(--c-ml), var(--c-cv));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.areas {
+  margin-top: 0.9rem; padding: 1.05rem 1.2rem 1.15rem;
+  background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 10px; backdrop-filter: blur(4px);
+}
+.areas-head { margin: 0 0 0.75rem; display: flex; align-items: baseline; gap: 0.7rem; }
+.areas-head .n { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 1.6rem; line-height: 1.1; color: var(--amber-300); }
+.areas-head .l { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.86rem; color: var(--on-dark-soft); line-height: 1.45; }
+.areas-bar { display: flex; gap: 3px; height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 0.95rem; }
+.areas-bar i { display: block; }
+.bg-opt { background: var(--c-opt); } .bg-ds { background: var(--c-ds); } .bg-ml { background: var(--c-ml); } .bg-cv { background: var(--c-cv); }
+.areas-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6rem 1rem; }
+.areas-list li { display: flex; align-items: baseline; gap: 0.55rem; }
+.areas-list .n { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 1.5rem; line-height: 1.1; }
+.areas-list .l { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.84rem; color: var(--on-dark-soft); }
+.areas-list .c-opt .n { color: var(--c-opt); } .areas-list .c-ds .n { color: var(--c-ds); }
+.areas-list .c-ml .n { color: var(--c-ml); } .areas-list .c-cv .n { color: var(--c-cv); }
+@media (max-width: 40rem) { .areas-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media print { .tagline .c-ai { -webkit-text-fill-color: #000; background: none; } .areas { border: 1px solid #ccc; background: #fff; } }
