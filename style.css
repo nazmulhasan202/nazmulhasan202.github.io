@@ -798,3 +798,12 @@ footer a:hover { color: #fff; text-decoration: underline; }
 .stat-link:hover::after, .stat-link:focus-visible::after { opacity: 1; transform: translateX(2px); }
 .side-links { gap: 0.45rem; }
 .side-links a, .side-links .copy-btn { padding: 0.36rem 0.6rem; font-size: 0.75rem; }
+
+/* wider profile panel so the values and links fit without scrolling */
+@media (min-width: 62rem) {
+  .shell { grid-template-columns: 19.5rem minmax(0, 1fr); }
+}
+@media (min-width: 76rem) {
+  .shell { grid-template-columns: 22rem minmax(0, 1fr); }
+  .side-inner { padding-left: 1.7rem; padding-right: 1.7rem; }
+}
