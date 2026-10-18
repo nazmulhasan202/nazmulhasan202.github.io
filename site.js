@@ -98,25 +98,27 @@
       .filter(Boolean);
 
     if (watched.length) {
-      var visible = new Set();
-
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) visible.add(entry.target.id);
-          else visible.delete(entry.target.id);
-        });
-
+      /* active section = the last one whose top edge has passed just under the sticky bar */
+      var spyTicking = false;
+      function updateSpy() {
+        spyTicking = false;
+        var line = Math.max(160, window.innerHeight * 0.3);
         var activeId = null;
         for (var i = 0; i < watched.length; i++) {
-          if (visible.has(watched[i].id)) { activeId = watched[i].id; break; }
+          if (watched[i].getBoundingClientRect().top <= line) activeId = watched[i].id;
         }
-
+        var atBottom = window.innerHeight + window.pageYOffset >= document.documentElement.scrollHeight - 4;
+        if (atBottom) activeId = watched[watched.length - 1].id;
         navLinks.forEach(function (a) {
           a.classList.toggle("current", a.getAttribute("href") === "#" + activeId);
         });
-      }, { rootMargin: "-20% 0px -70% 0px", threshold: 0 });
-
-      watched.forEach(function (sec) { observer.observe(sec); });
+      }
+      function onSpyScroll() {
+        if (!spyTicking) { spyTicking = true; window.requestAnimationFrame(updateSpy); }
+      }
+      window.addEventListener("scroll", onSpyScroll, { passive: true });
+      window.addEventListener("resize", onSpyScroll);
+      updateSpy();
     }
   }
 
