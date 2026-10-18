@@ -757,3 +757,19 @@ footer a:hover { color: #fff; text-decoration: underline; }
 .areas-list .c-ml .n { color: var(--c-ml); } .areas-list .c-cv .n { color: var(--c-cv); }
 @media (max-width: 40rem) { .areas-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media print { .tagline .c-ai { -webkit-text-fill-color: #000; background: none; } .areas { border: 1px solid #ccc; background: #fff; } }
+
+/* ---------- project area tags (same colors as the tagline legend) ---------- */
+
+:root { --t-opt: #b45309; --t-ds: #0f766e; --t-ml: #6d28d9; --t-cv: #be185d; }
+.tags li.area, .area-legend li.area {
+  color: #fff; border: 0; letter-spacing: 0.04em; text-transform: uppercase;
+  font-size: 0.7rem; font-weight: 700; padding: 0.36rem 0.8rem;
+}
+.a-opt { background: var(--t-opt) !important; } .a-ds { background: var(--t-ds) !important; }
+.a-ml { background: var(--t-ml) !important; } .a-cv { background: var(--t-cv) !important; }
+.area-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 0.45rem; padding: 0; margin: 1.1rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.area-legend li.area { border-radius: 999px; }
+.areas-link { margin-left: auto; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.8rem; color: var(--amber-300); text-decoration: none; white-space: nowrap; }
+.areas-link:hover { color: #fff; text-decoration: underline; }
+@media (max-width: 40rem) { .areas-head { flex-wrap: wrap; } .areas-link { margin-left: 0; width: 100%; } }

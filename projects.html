@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Projects - Nazmul Hasan</title>
 <meta name="description" content="Research, industry and self-driven projects by Nazmul Hasan across machine learning, computer vision and optimization.">
-<link rel="stylesheet" href="style.css?v=10">
+<link rel="stylesheet" href="style.css?v=13">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88' font-family='Georgia,serif'>N</text></svg>">
 </head>
 <body>
@@ -67,8 +67,9 @@
   <h1>Research, industry work<br>and things I built on my own.</h1>
   <p class="lede">
     The four headline projects are on the <a href="index.html#work">front page</a>. This is the
-    longer catalog, including course and self-driven work.
+    longer catalog, including course and self-driven work. Each project carries a colored area tag.
   </p>
+  <ul class="area-legend" aria-label="Project areas"><li class="area a-opt">Optimization</li><li class="area a-ds">Data science</li><li class="area a-ml">Machine learning</li><li class="area a-cv">Computer vision</li></ul>
 </div>
 </section>
 
@@ -80,28 +81,28 @@
     <div class="card-meta"><span class="org">NASA Glenn, Lockheed Martin</span><span class="when">PhD research</span></div>
     <h3>Ensemble ML for anomaly detection in laser powder bed fusion</h3>
     <p>Real-time photodiode sensor data feeding ensemble models that detect overheating layer by layer, at F1 = 0.865, a 9.66% improvement over the prior state of the art. Porosity models reach F1 = 0.879.</p>
-    <ul class="tags"><li>Anomaly detection</li><li>Sensor data</li><li>Ensemble methods</li></ul>
+    <ul class="tags"><li class="area a-ml">Machine learning</li><li>Anomaly detection</li><li>Sensor data</li><li>Ensemble methods</li></ul>
   </article>
 
   <article class="card">
     <div class="card-meta"><span class="org">PhD research</span><span class="when">2025</span></div>
     <h3>Vision transformer segmentation of melt pool images</h3>
     <p>Applied SAM and CLIPSeg to melt pool segmentation where labeled data is scarce, using prompt engineering to get zero-shot performance from foundation models never trained for the domain. This work is the baseline that RAMPSeg was built to beat.</p>
-    <ul class="tags"><li>SAM</li><li>CLIPSeg</li><li>Zero-shot</li><li>Prompt engineering</li></ul>
+    <ul class="tags"><li class="area a-cv">Computer vision</li><li>SAM</li><li>CLIPSeg</li><li>Zero-shot</li><li>Prompt engineering</li></ul>
   </article>
 
   <article class="card">
     <div class="card-meta"><span class="org">NASA Glenn</span><span class="when">PhD research</span></div>
     <h3>Statistical and predictive modeling of thermal process history</h3>
     <p>Physics-guided models correlating process monitoring signals to solidification microstructure, with R squared between 0.90 and 0.95, and roughly 1.5 hours of analysis time saved per case.</p>
-    <ul class="tags"><li>Physics-guided ML</li><li>Regression</li><li>Inconel 718</li></ul>
+    <ul class="tags"><li class="area a-ds">Data science</li><li>Physics-guided ML</li><li>Regression</li><li>Inconel 718</li></ul>
   </article>
 
   <article class="card">
     <div class="card-meta"><span class="org">PhD research</span><span class="when">2023</span></div>
     <h3>Ontology for root cause analysis in metal additive manufacturing</h3>
     <p>A structured knowledge graph of defects and causal factors, built so that process planning decisions and corrective actions trace back to evidence rather than to institutional memory. Finalist for the IISE Best Student Paper Award.</p>
-    <ul class="tags"><li>Knowledge graphs</li><li>Ontology</li><li>Root cause analysis</li></ul>
+    <ul class="tags"><li class="area a-ds">Data science</li><li>Knowledge graphs</li><li>Ontology</li><li>Root cause analysis</li></ul>
   </article>
 
   <article class="card">
@@ -118,7 +119,7 @@
         <figcaption>System analysis across the four subsystems</figcaption>
       </figure>
     </div>
-    <ul class="tags"><li>Reliability-based design</li><li>Multidisciplinary optimization</li><li>Injection molding</li></ul>
+    <ul class="tags"><li class="area a-opt">Optimization</li><li>Reliability-based design</li><li>Multidisciplinary optimization</li><li>Injection molding</li></ul>
   </article>
 
   <article class="card">
@@ -131,7 +132,7 @@
         <figcaption>FPGA and MPM signals before alignment, with the initial time shift marked</figcaption>
       </figure>
     </div>
-    <ul class="tags"><li>Regression</li><li>Sensor synchronization</li><li>Process monitoring</li></ul>
+    <ul class="tags"><li class="area a-ds">Data science</li><li>Regression</li><li>Sensor synchronization</li><li>Process monitoring</li></ul>
   </article>
 </div>
 </section>
@@ -144,7 +145,7 @@
     <div class="card-meta"><span class="org">Open source</span><span class="when">2025</span></div>
     <h3>Object detection and counting on a conveyor belt</h3>
     <p>Fine-tuned an Ultralytics YOLO model to detect and count apples moving on a conveyor, reaching F1 = 0.98. Public repository.</p>
-    <ul class="tags"><li>YOLO</li><li>Object detection</li><li>Ultralytics</li></ul>
+    <ul class="tags"><li class="area a-cv">Computer vision</li><li>YOLO</li><li>Object detection</li><li>Ultralytics</li></ul>
   </article>
 
   <article class="card">
@@ -162,14 +163,14 @@
         </p>
       </div>
     </details>
-    <ul class="tags"><li>Random Forest</li><li>Streamlit</li><li>Predictive maintenance</li></ul>
+    <ul class="tags"><li class="area a-ml">Machine learning</li><li>Random Forest</li><li>Streamlit</li><li>Predictive maintenance</li></ul>
   </article>
 
   <article class="card">
     <div class="card-meta"><span class="org">Generative AI</span><span class="when">2025</span></div>
     <h3>Privacy Shield: AI face censor</h3>
     <p>A web application that detects and censors faces in images, with an interactive mask editor, censor style options and export. Built entirely by prompting in Google AI Studio with Gemini, without hand-written code, as an experiment in how far prompt-driven product building actually goes.</p>
-    <ul class="tags"><li>Gemini</li><li>Prompt engineering</li><li>Face detection</li></ul>
+    <ul class="tags"><li class="area a-cv">Computer vision</li><li>Gemini</li><li>Prompt engineering</li><li>Face detection</li></ul>
   </article>
 </div>
 </section>
@@ -182,7 +183,7 @@
     <div class="card-meta"><span class="org">BUET</span><span class="when">2018</span></div>
     <h3>Multi-objective optimization of a face milling operation</h3>
     <p>Implemented and compared five multi-objective routines in MATLAB: global criterion, lexicographic, weighted sum, epsilon-constraint and a genetic algorithm.</p>
-    <ul class="tags"><li>Multi-objective optimization</li><li>MATLAB</li></ul>
+    <ul class="tags"><li class="area a-opt">Optimization</li><li>Multi-objective optimization</li><li>MATLAB</li></ul>
   </article>
 
   <article class="card">
@@ -196,7 +197,7 @@
     <div class="card-meta"><span class="org">Course projects</span><span class="when">2024 - 2025</span></div>
     <h3>LLM applications</h3>
     <p>An API pipeline for sentiment analysis of Amazon reviews, and an automated extraction and synthesis tool for financial report insights.</p>
-    <ul class="tags"><li>LLM</li><li>NLP</li><li>Sentiment analysis</li></ul>
+    <ul class="tags"><li class="area a-ml">Machine learning</li><li>LLM</li><li>NLP</li><li>Sentiment analysis</li></ul>
   </article>
 
   <article class="card">
