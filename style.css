@@ -841,4 +841,13 @@ footer a:hover { color: #fff; text-decoration: underline; }
   }
   .hero .links { display: none; }
   .hero { padding-top: 2.6rem; }
+
+  /* navigation bar first, then the profile block */
+  .shell { display: flex; flex-direction: column; }
+  .content { display: contents; }
+  .site-head { order: -1; }
+  .site-head .wordmark { display: none; }
+  .site-head .head-inner { padding: 0.8rem 1.25rem; flex-wrap: nowrap; }
+  .site-head nav { flex-wrap: nowrap; overflow-x: auto; white-space: nowrap; gap: 1.1rem; scrollbar-width: none; }
+  .site-head nav::-webkit-scrollbar { display: none; }
 }
