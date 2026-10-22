@@ -867,3 +867,12 @@ footer a:hover { color: #fff; text-decoration: underline; }
 .photo-link { margin-left: 0.4rem; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.74rem; color: var(--amber-600); text-decoration: none; border-bottom: 1px dotted var(--amber-500); white-space: nowrap; }
 .photo-link:hover { color: var(--plum-ink); border-bottom-style: solid; }
 #photo-qcre-2026, #photo-gradslamx-2025 { scroll-margin-top: 5rem; }
+
+/* ---------- honors photo wall: read left to right, row by row ---------- */
+
+.photo-wall { columns: auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.8rem 1.2rem; align-items: start; }
+.photo-wall .shot { margin: 0; break-inside: auto; }
+.photo-wall .shot:not(.carousel) > a { aspect-ratio: 4 / 3; background: #f1ede6; }
+.photo-wall .shot:not(.carousel) > a img { width: 100%; height: 100%; object-fit: contain; }
+@media (max-width: 56rem) { .photo-wall { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 34rem) { .photo-wall { grid-template-columns: minmax(0, 1fr); } }
