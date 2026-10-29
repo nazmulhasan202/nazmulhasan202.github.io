@@ -128,6 +128,10 @@ section { padding: 4rem 0 3.5rem; scroll-margin-top: 4rem; }
   background: var(--plum-800); color: var(--amber-300);
   font-size: 0.86rem; font-weight: 700; letter-spacing: 0.02em;
 }
+/* section numbers hidden: plain label with a short rule instead of a numbered badge */
+.sec-n { display: none; }
+.sec-label::before { content: ""; width: 1.6rem; height: 2px; background: var(--amber-500); flex: none; }
+.tone-dark .sec-label::before { background: var(--amber-400); }
 .sec-head { margin: 0 0 2.2rem; }
 .sec-head h2 {
   font-size: clamp(1.6rem, 3.6vw, 2.2rem); font-weight: 400; margin: 0 0 1.1rem;
